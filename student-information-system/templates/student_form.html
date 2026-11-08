@@ -1,0 +1,128 @@
+
+<div class="form-grid">
+
+    <div class="form-group">
+        <label>Student ID *</label>
+        <input name="student_id" required maxlength="30"
+               value="{{ student.student_id if student else form_data.get('student_id', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>First Name *</label>
+        <input name="first_name" required maxlength="100"
+               value="{{ student.first_name if student else form_data.get('first_name', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Middle Name</label>
+        <input name="middle_name" maxlength="100"
+               value="{{ student.middle_name if student else form_data.get('middle_name', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Last Name *</label>
+        <input name="last_name" required maxlength="100"
+               value="{{ student.last_name if student else form_data.get('last_name', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Gender *</label>
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            {% for value in ["Male", "Female"] %}
+            <option value="{{ value }}"
+                {% if (student.gender if student else form_data.get('gender', '')) == value %}selected{% endif %}>
+                {{ value }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Date of Birth *</label>
+        <input type="date" name="date_of_birth" required
+               value="{{ student.date_of_birth if student else form_data.get('date_of_birth', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Email *</label>
+        <input type="email" name="email" required maxlength="254"
+               value="{{ student.email if student else form_data.get('email', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Contact Number *</label>
+        <input name="contact_number" required maxlength="20"
+               value="{{ student.contact_number if student else form_data.get('contact_number', '') }}">
+    </div>
+
+    <div class="form-group full-width">
+        <label>Address *</label>
+        <textarea name="address" required maxlength="500">{{ student.address if student else form_data.get('address', '') }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Department *</label>
+        <select name="department" required>
+            <option value="">Select Department</option>
+            {% for value in departments %}
+            <option value="{{ value }}"
+                {% if (student.department if student else form_data.get('department', '')) == value %}selected{% endif %}>
+                {{ value }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Course *</label>
+        <select name="course" required>
+            <option value="">Select Course</option>
+            {% for value in courses %}
+            <option value="{{ value }}"
+                {% if (student.course if student else form_data.get('course', '')) == value %}selected{% endif %}>
+                {{ value }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Year Level *</label>
+        <select name="year_level" required>
+            <option value="">Select Year</option>
+            {% for value in years %}
+            <option value="{{ value }}"
+                {% if (student.year_level if student else form_data.get('year_level', '')) == value %}selected{% endif %}>
+                {{ value }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Section *</label>
+        <input name="section" required maxlength="20"
+               value="{{ student.section if student else form_data.get('section', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Enrollment Date *</label>
+        <input type="date" name="enrollment_date" required
+               value="{{ student.enrollment_date if student else form_data.get('enrollment_date', '') }}">
+    </div>
+
+    <div class="form-group">
+        <label>Student Status *</label>
+        <select name="student_status" required>
+            <option value="">Select Status</option>
+            {% for value in statuses %}
+            <option value="{{ value }}"
+                {% if (student.student_status if student else form_data.get('student_status', '')) == value %}selected{% endif %}>
+                {{ value }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+</div>

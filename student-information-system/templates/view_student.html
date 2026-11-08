@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+
+{% block title %}Student Details | SIS{% endblock %}
+{% block heading %}Student Details{% endblock %}
+
+{% block content %}
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+
+        <div class="actions">
+            <a href="{{ url_for('edit_student', id=student.id) }}"
+               class="btn btn-edit">Edit</a>
+
+            <a href="{{ url_for('students') }}"
+               class="btn btn-outline">Back</a>
+        </div>
+    </div>
+
+    <div class="details-grid">
+
+        {% for label, value in [
+            ("Student ID", student.student_id),
+            ("First Name", student.first_name),
+            ("Middle Name", student.middle_name),
+            ("Last Name", student.last_name),
+            ("Gender", student.gender),
+            ("Date of Birth", student.date_of_birth),
+            ("Email", student.email),
+            ("Contact Number", student.contact_number),
+            ("Address", student.address),
+            ("Department", student.department),
+            ("Course", student.course),
+            ("Year Level", student.year_level),
+            ("Section", student.section),
+            ("Enrollment Date", student.enrollment_date),
+            ("Student Status", student.student_status)
+        ] %}
+
+        <div class="detail-item">
+            <span>{{ label }}</span>
+            <strong>{{ value or "-" }}</strong>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

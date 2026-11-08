@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+
+{% block title %}Error | SIS{% endblock %}
+{% block heading %}System Error{% endblock %}
+
+{% block content %}
+
+<div class="panel confirmation">
+
+    <h2>Unable to Complete Request</h2>
+
+    <p>{{ message }}</p>
+
+    <a href="{{ url_for('dashboard') }}" class="btn btn-primary">
+        Return to Dashboard
+    </a>
+
+</div>
+
+{% endblock %}

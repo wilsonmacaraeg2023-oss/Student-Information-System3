@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Student Information System{% endblock %}</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">S</div>
+            <div>
+                <h2>Student SIS</h2>
+                <small>Information System</small>
+            </div>
+        </div>
+
+        <nav>
+            <a href="{{ url_for('dashboard') }}"
+               class="{% if request.endpoint == 'dashboard' %}active{% endif %}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('students') }}"
+               class="{% if request.endpoint == 'students' %}active{% endif %}">
+                Students
+            </a>
+
+            <a href="{{ url_for('add_student') }}"
+               class="{% if request.endpoint == 'add_student' %}active{% endif %}">
+                Add Student
+            </a>
+
+            <a href="{{ url_for('about') }}"
+               class="{% if request.endpoint == 'about' %}active{% endif %}">
+                About System
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            Student Information System<br>
+            Academic Records Management
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>{% block heading %}Dashboard{% endblock %}</h1>
+                <p>Student Information Management</p>
+            </div>
+
+            <a href="{{ url_for('add_student') }}" class="btn btn-primary">
+                + Add Student
+            </a>
+        </header>
+
+        <section class="content">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
